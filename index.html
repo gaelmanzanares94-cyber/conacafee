@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONALEP - Cafetería</title><link rel="manifest" href="pwa/manifest.json"><link rel="stylesheet" href="css/style.css">
+    <style>
+    /* added-by-assistant-style */
+    :root{ --bg:#f7f7f9; --card:#fff; --accent:#2b6cb0; --muted:#6b7280; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    body{background:var(--bg); color:#111; margin:0; padding:0;}
+    header{background:linear-gradient(90deg,var(--accent),#4c51bf); color:white; padding:1.2rem; box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    header h1{margin:0; font-size:1.2rem;}
+    .container{max-width:980px; margin:1.2rem auto; padding:1rem;}
+    .card{background:var(--card); border-radius:12px; padding:1rem; box-shadow:0 6px 18px rgba(15,23,42,0.06); margin-bottom:1rem;}
+    nav{margin-top:0.6rem;}
+    .grid{display:grid; grid-template-columns: 1fr; gap:1rem;}
+    @media(min-width:800px){ .grid{grid-template-columns: 1fr 320px;} }
+    .image-placeholder{background:repeating-linear-gradient(45deg,#eee,#eee 10px,#f8f8f8 10px,#f8f8f8 20px); padding:0.8rem; border-radius:8px; color:var(--muted); text-align:center;}
+    footer{font-size:0.85rem; color:var(--muted); text-align:center; padding:1rem 0;}
+    .muted{color:var(--muted);}
+    .section-title{font-size:1.05rem; margin-bottom:0.6rem; color:var(--accent);}
+    .button{display:inline-block;padding:0.5rem 0.9rem;border-radius:999px;background:var(--accent);color:white;text-decoration:none;}
+    </style>
+    
+</head><body>
+<header class="header"><div class="brand">CONALEP - Cafetería del Plantel</div><div class="topbar"><div id="user-label" class="info">No identificado</div><nav><a id="menu-link" href="html/products.html">Menú</a><a id="orders-link" href="html/orders.html">Pedidos</a><button id="login-btn" class="btn">Entrar</button><button id="logout-btn" class="btn" style="display:none">Salir</button><button id="open-cart" class="btn">Carrito <span class="cart-badge" id="cart-count">0</span></button></nav></div></header>
+<main class="container"><section><h2>Bienvenido al sistema de pedidos de la Cafetería CONALEP</h2><p>Realiza tu pedido en línea y recoge tu comida mostrando el código único en caja.</p></section></main>
+<footer class="footer">CONALEP - Cafetería del Plantel · Proyecto escolar</footer>
+
+<!-- login modal -->
+<div id="login-modal" class="modal" style="display:none"><div class="dialog"><h3>Iniciar sesión</h3><form id="login-form"><input id="student-name" class="input" placeholder="Nombre completo"><br><br><input id="student-mat" class="input" placeholder="Matrícula"><br><br><div style="text-align:right"><button class="btn" type="submit">Entrar</button> <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="small">Cerrar</button></div></form></div></div>
+
+<!-- payment modal -->
+<div id="payment-modal" class="modal" style="display:none"><div class="dialog"><h3>Pago</h3><p>Total: $<span id="pay-amount">0.00</span></p><div style="display:flex;gap:12px"><div style="flex:1"><h4>Tarjeta (simulado)</h4><input class="input" placeholder="Número de tarjeta"><div class="form-row" style="margin-top:8px"><input class="input" placeholder="MM/AA"><input class="input" placeholder="CVC"></div><div style="margin-top:8px"><button class="btn" id="card-pay">Pagar con tarjeta</button></div></div><div style="width:220px"><h4>Pago con QR</h4><div id="qr-box" style="margin-bottom:8px"></div><div>Código de recogida: <div class="badge" id="pickup-code"></div></div><div style="margin-top:8px"><button class="btn" id="confirm-payment">Confirmar pago</button></div></div></div><div style="text-align:right;margin-top:8px"><button id="close-payment" class="small" onclick="document.getElementById('payment-modal').style.display='none'">Cerrar</button></div></div></div>
+
+<!-- ticket modal -->
+<div id="ticket-modal" class="modal" style="display:none"><div class="dialog" id="ticket-content"></div><div style="position:absolute;bottom:30px;right:30px"><button id="close-ticket" class="small" onclick="document.getElementById('ticket-modal').style.display='none'">Cerrar</button></div></div>
+
+<div id="toast" style="position:fixed;left:20px;bottom:20px;background:var(--green);color:#fff;padding:10px;border-radius:8px;opacity:0;transition:opacity .3s"></div>
+
+<script src="js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</body></html>
